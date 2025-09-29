@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cornify Market</title>
+    <title>Sejahtera Shop</title>
     
     <!-- External Dependencies -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,7 +45,7 @@
             --text-primary-light: rgba(0, 0, 0, 0.87);
             --text-secondary-light: rgba(0, 0, 0, 0.6);
             --text-primary-dark: rgba(255, 255, 255, 0.95);
-            --text-secondary-dark: rgba(255, 255, 255, 0.7);
+            --text-secondary-dark: rgb(255, 255, 255);
         }
 
         /* ===========================================
@@ -124,20 +124,13 @@
            TEXT COLOR UTILITIES
         =========================================== */
         .text-primary {
-            color: var(--text-primary-light);
-        }
-
-        body.dark .text-primary {
             color: var(--text-primary-dark);
         }
 
         .text-secondary {
-            color: var(--text-secondary-light);
-        }
-
-        body.dark .text-secondary {
             color: var(--text-secondary-dark);
         }
+
 
         /* ===========================================
            HEADER & NAVIGATION STYLES
@@ -229,7 +222,11 @@
 
 
         .gradient-bg {
-            background: linear-gradient(135deg, #C29F85 0%, #521903 100%);
+            /* background: linear-gradient(135deg, #341f1a 0%, #9e7a6a 100%); */
+                background: linear-gradient(
+                rgba(0,0,0, 0.6),
+                rgba(0,0,0, 0.6)
+            ),  url('img/Kayu.jfif');
         }
 
         .hero-content {
@@ -287,6 +284,23 @@
         body.dark .product-card:hover {
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
+
+        .product-title {
+            color: var(--text-primary-light);
+        }
+
+        body.dark .product-title {
+            color: var(--text-primary-dark);
+        }
+
+        .product-desc {
+            color: var(--text-secondary-light);
+        }
+
+        body.dark .product-desc {
+            color: var(--text-secondary-dark);
+        }
+
 
         /* ===========================================
            FEATURE CARD STYLES
@@ -634,6 +648,17 @@
             transition: opacity 1s ease, transform 2s ease;
         }
 
+        .blur-text-effect span {
+            filter: blur(8px);
+            opacity: 0.3;
+            transition: filter 1s cubic-bezier(0.4,0,0.2,1), opacity 1s cubic-bezier(0.4,0,0.2,1);
+            display: inline-block;
+        }
+        .blur-text-effect span.active {
+            filter: blur(0);
+            opacity: 1;
+        }
+
         /* ===========================================
            NOTIFICATION STYLES
         =========================================== */
@@ -871,7 +896,7 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <div class="text-xl md:text-2xl font-bold text-primary">
-                        Cornify
+                        Sejahtera Shop
                     </div>
                 </div>
                 
@@ -956,15 +981,15 @@
                     <h2 class="hero-title font-bold mb-10 md:mb-6 leading-tight">
                         <div class="scroll-float" data-scroll-animation="true">
                             Selamat datang di<br class="hidden md:block">
-                            <span class="md:hidden">Cornify </span>
+                            <span class="md:hidden">Sejahtera Shop</span>
                         </div>
                     </h2>
-                    <p class="hero-subtitle mb-10 md:mb-8 opacity-90">
+                    <p class="split-text hero-subtitle mb-10 md:mb-8 opacity-90">
                         Dapatkan Jagung yang berkualitas tinggi langsung dari petani lokal dengan harga terbaik dan pengiriman cepat.
                     </p>
                     <div class="btn-group">
                         <button class="btn-primary glass-strong text-primary hover:scale-105 transition-all duration-300" onclick="location.href='#products'">
-                            Belanja Sekarang
+                            <p class="blur-text-effect text-primary">Belanja Sekarang</p>
                         </button>
                         <!-- <button class="btn-primary glass-strong text-primary hover:scale-105 transition-all duration-300">
                             Lihat Katalog
@@ -978,17 +1003,19 @@
     <!-- INTRODUCTION JAGUNG PIPIL SECTION -->
     <section id="about" class="gradient-bg text-white py-12 md:py-20">
         <div class="container mx-auto px-4 md:px-6">
-            <h2 class="text-2xl md:text-4xl text-center font-bold text-primary mb-4">Tentang Kami</h2>
+            <h2 class="scroll-float text-2xl md:text-4xl text-center font-bold text-primary mb-4">Tentang Kami</h2>
             <div class="flex flex-col md:flex-row items-center justify-between">
 
                 <div class="md:w-1/2 mb-8 md:mb-0 flex justify-start">
-                    <p class="mb-4 md:mb-6 leading-relaxed max-w-sm text-sm md:text-base text-justify">
+                    <p class="split-text md:mb-6 leading-relaxed max-w-sm text-sm md:text-base text-justify">
                         Setiap tongkol jagung menyimpan cerita perjalanan panjang dari benih hingga panen, namun sayangnya juga menyimpan markup harga yang tidak wajar. Kami hadir sebagai solusi inovatif yang menghubungkan konsumen cerdas dengan petani jagung berkualitas melalui sistem direct-to-consumer yang transparan dan efisien. Dengan mengeliminasi rantai distribusi konvensional, kami mampu memberikan harga kompetitif untuk konsumen sambil memastikan petani mitra mendapatkan margin keuntungan yang layak.
                     </p>
                 </div>
                 <div class="md:w-1/2"></div>
-                    <div class="bg-white bg-opacity-20 p-4 md:p-6 rounded-3xl backdrop-blur-sm">
-                        <img src="img/JagunggCoju.jfif" alt="Beragam hasil pertanian segar seperti sayuran hijau, buah-buahan, dan rempah-rempah yang tersusun rapi di keranjang anyaman" class="rounded-2xl shadow-2xl w-full" />
+                    <div class="bg-white bg-opacity-20 p-4 md:p-6 rounded-3xl backdrop-blur-sm">        
+                        <a href="https://maps.app.goo.gl/tWL44AaoagVjT6j17?g_st=aw">
+                            <img src="img/Jagyng.jfif" alt="Beragam hasil pertanian segar seperti sayuran hijau, buah-buahan, dan rempah-rempah yang tersusun rapi di keranjang anyaman" class="rounded-2xl shadow-2xl w-full" />
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1002,8 +1029,8 @@
         <div class="container  mx-auto px-4 md:px-6">
             <!-- Section Header -->
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-2xl md:text-4xl font-bold text-primary mb-4 ">Kenapa Memilih Kami</h2>
-                <p class="text-secondary max-w-2xl mx-auto">Kami menyediakan layanan terbaik untuk pengalaman berbelanja yang menyenangkan</p>
+                <h2 class="scroll-float md:text-4xl font-bold text-primary mb-4 ">Kenapa Memilih Kami</h2>
+                <p class="split-text  max-w-2xl mx-auto text text-secondary">Kami menyediakan layanan terbaik untuk pengalaman berbelanja yang menyenangkan</p>
             </div>
 
             <!-- Features Grid -->
@@ -1011,38 +1038,38 @@
                 <!-- Feature 1: Fast Delivery -->
                 <div class="feature-card text-center p-6">
                     <div class="feature-icon w-16 h-16 glass-subtle rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-truck text-3xl text-green-500"></i>
+                        <i class="fas fa-hand-holding-usd text-3xl text-amber-500"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-primary">Pengiriman Cepat</h3>
-                    <p class="text-secondary">Pengiriman same-day untuk menjaga kesegaran produk</p>
+                    <h3 class="split-text text-xl font-semibold mb-4 text-primary">Harga Terjangkau</h3>
+                    <p class="split-text blur-text-effect text-secondary">Harga langsung dari petani tanpa perantara.</p>
+                </div>
+                
+                <div class="feature-card text-center p-6">
+                    <div class="feature-icon w-16 h-16 glass-subtle rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-3xl text-amber-500"></i>
+                    </div>
+                    <h3 class="split-text text-xl font-semibold mb-4 text-primary">Kualitas Terjamin</h3>
+                    <p class="split-text blur-text-effect text-secondary">Jagung pilihan terbaik dan berkualitas tinggi.</p>
                 </div>
 
                 <!-- Feature 2: 100% Organic -->
                 <div class="feature-card text-center p-6">
                     <div class="feature-icon w-16 h-16 glass-subtle rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-leaf text-3xl text-green-500"></i>
+                        <i class="fas fa-check-circle text-3xl text-amber-500"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-primary">100% Organik</h3>
-                    <p class="text-secondary">Produk bebas pestisida dan bahan kimia berbahaya</p>
+                    <h3 class="split-text text-xl font-semibold mb-4 text-primary">Mudah & Praktis</h3>
+                    <p class="split-text blur-text-effect text-secondary">Pesan kapan saja dan dimana saja.</p>
                 </div>
 
                 <!-- Feature 3: Affordable Price -->
                 <div class="feature-card text-center p-6">
                     <div class="feature-icon w-16 h-16 glass-subtle rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-hand-holding-usd text-3xl text-green-500"></i>
+                        <i class="fas fa-handshake text-3xl text-amber-500"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-primary">Harga Terjangkau</h3>
-                    <p class="text-secondary">Harga langsung dari petani tanpa perantara</p>
+                    <h3 class="split-text text-xl font-semibold mb-4 text-primary">Dukung Petani</h3>
+                    <p class="split-text blur-text-effect text-secondary">Setiap pembelian Anda membantu meningkatkan kesejahteraan petani Indonesia.</p>
                 </div>
 
-                <!-- Feature 4: Quality Guarantee -->
-                <div class="feature-card text-center p-6">
-                    <div class="feature-icon w-16 h-16 glass-subtle rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-shield-alt text-3xl text-green-500"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-primary">Kualitas Terjamin</h3>
-                    <p class="text-secondary">Garansi uang kembali jika tidak puas dengan produk</p>
-                </div>
             </div>
         </div>
     </section>
@@ -1058,7 +1085,7 @@
                 <h2 class="text-2xl md:text-4xl font-bold text-primary mb-4">
                     <div class="scroll-float" data-scroll-animation="true">Produk Unggulan Kami</div>
                 </h2>
-                <p class="text-secondary max-w-2xl mx-auto">Temukan berbagai macam hasil pertanian segar langsung dari sumber terpercaya</p>
+                <p class="split-text text-secondary max-w-2xl mx-auto">Temukan berbagai macam hasil pertanian segar langsung dari sumber terpercaya</p>
             </div>
             
             <!-- Products Grid -->
@@ -1101,8 +1128,8 @@
         <div class="container mx-auto px-4 md:px-6">
             <!-- Section Header -->
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-2xl md:text-4xl font-bold text-primary mb-4">Hubungi Kami</h2>
-                <p class="text-secondary max-w-2xl mx-auto">Kami siap membantu Anda dengan segala pertanyaan tentang produk dan layanan kami</p>
+                <h2 class="scroll-float text-2xl md:text-4xl font-bold text-primary mb-4">Hubungi Kami</h2>
+                <p class="split-text text-secondary max-w-2xl mx-auto">Kami siap membantu Anda dengan segala pertanyaan tentang produk dan layanan kami</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -1112,7 +1139,7 @@
                     <div class="space-y-4">
                         <div class="flex items-start">
                             <div class="w-12 h-12 glass-subtle rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-phone text-green-500"></i>
+                                <i class="fas fa-phone text-amber-500"></i>
                             </div>
                             <div>
                                 <h4 class="font-semibold text-primary">Telepon</h4>
@@ -1121,11 +1148,11 @@
                         </div>
                         <div class="flex items-start">
                             <div class="w-12 h-12 glass-subtle rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-envelope text-green-500"></i>
+                                <i class="fas fa-envelope text-amber-500"></i>
                             </div>
                             <div>
                                 <h4 class="font-semibold text-primary">Email</h4>
-                                <p class="text-secondary">doyymarket@gmail.com</p>
+                                <p class="text-secondary">sejahtera@gmail.com</p>
                             </div>
                         </div>
                     </div>
@@ -1144,7 +1171,7 @@
                         <div>
                             <textarea placeholder="Pesan" rows="4" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 resize-vertical"></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-green-500 text-white py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-600 transition-all duration-300 transform hover:scale-105">
+                        <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-amber-400 text-white py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-600 transition-all duration-300 transform hover:scale-105">
                             Kirim Pesan
                         </button>
                     </form>
@@ -1161,22 +1188,18 @@
             <div class="footer-grid grid">
                 <!-- Company Info -->
                 <div class="mb-8 md:mb-0">
-                    <div class="text-xl md:text-2xl font-bold text-green-400 mb-4">
-                        <i class="fas fa-leaf mr-2"></i>
-                        DoyyMarket
+                    <div class="text-xl md:text-2xl font-bold text-amber-500 mb-4">
+                        Sejahtera Market
                     </div>
                     <p class="text-gray-300 mb-4">Menyediakan produk pertanian berkualitas tinggi langsung dari petani lokal.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-green-400 transition duration-300 glass-subtle p-2 rounded-full">
-                            <i class="fab fa-facebook-f"></i>
+                        <a href="#" class="text-gray-300 hover:text-amber-500 transition duration-300 glass-subtle p-2 rounded-full">
+                            <i class="fab fa-tiktok"></i>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-green-400 transition duration-300 glass-subtle p-2 rounded-full">
+                        <a href="#" class="text-gray-300 hover:text-amber-500 transition duration-300 glass-subtle p-2 rounded-full">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-green-400 transition duration-300 glass-subtle p-2 rounded-full">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-300 hover:text-green-400 transition duration-300 glass-subtle p-2 rounded-full">
+                        <a href="#" class="text-gray-300 hover:text-amber-500 transition duration-300 glass-subtle p-2 rounded-full">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -1186,22 +1209,19 @@
                 <div class="mb-8 md:mb-0">
                     <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
                     <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-300 hover:text-green-400 transition duration-300">Beranda</a></li>
-                        <li><a href="#products" class="text-gray-300 hover:text-green-400 transition duration-300">Produk</a></li>
-                        <li><a href="#features" class="text-gray-300 hover:text-green-400 transition duration-300">Fitur</a></li>
-                        <li><a href="#contact" class="text-gray-300 hover:text-green-400 transition duration-300">Kontak</a></li>
+                        <li><a href="#home" class="text-gray-300 hover:text-amber-500 transition duration-300">Beranda</a></li>
+                        <li><a href="#products" class="text-gray-300 hover:text-amber-500 transition duration-300">Produk</a></li>
+                        <li><a href="#features" class="text-gray-300 hover:text-amber-500 transition duration-300">Fitur</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-amber-500 transition duration-300">Kontak</a></li>
                     </ul>
                 </div>
 
                 <!-- Product Categories -->
                 <div class="mb-8 md:mb-0">
                     <h4 class="text-lg font-semibold mb-4">Kategori Produk</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-green-400 transition duration-300">Sayuran Organik</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-green-400 transition duration-300">Buah-buahan Segar</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-green-400 transition duration-300">Beras & Serealia</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-green-400 transition duration-300">Rempah-Rempah</a></li>
-                    </ul>
+                    <p class="text-gray-300 mb-4"></p>
+                    <p class="text-gray-300 mb-4"></p>
+                    <p class="text-gray-300 mb-4"></p>
                 </div>
 
                 <!-- Newsletter -->
@@ -1210,7 +1230,7 @@
                     <p class="text-gray-300 mb-4">Dapatkan update promo dan produk terbaru</p>
                     <div class="flex flex-col sm:flex-row gap-2">
                         <input type="email" placeholder="Email Anda" class="flex-1 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm">
-                        <button class="bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300 flex-shrink-0">
+                        <button class="bg-amber-500 px-4 py-2 rounded-lg hover:bg-amber-700 transition duration-300 flex-shrink-0">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
@@ -1219,7 +1239,7 @@
 
             <!-- Footer Bottom -->
             <div class="border-t border-gray-600 border-opacity-30 mt-8 pt-8 text-center">
-                <p class="text-gray-300">© 2025 DoyyMarket. All rights reserved.</p>
+                <p class="text-gray-300">© 2025 DoyyMarket.</p>
             </div>
         </div>
     </footer>
@@ -1287,64 +1307,16 @@
         const products = [
             {
                 id: 1,
-                name: "Jagung Ketan",
-                price: 7500,
-                image: "img/JagungKetan.jfif",
-                description: "Jagung ketan dengan tekstur pulen. Enak direbus sebagai camilan atau aneka bahan olahan makanan tradisional.",
+                name: "Jagung Kering",
+                price: 6000,
+                image: "img/JagungKering.jfif",
+                description: "Jagung kering dengan tekstur pulen. Enak direbus sebagai camilan atau aneka bahan olahan makanan tradisional.",
                 category: "jagung"
             },
             {
                 id: 2,
-                name: "Jagung Manis",
-                price: 9500,
-                image: "img/JagungManis.jfif",
-                description: "Jagung manis segar, dari petani lokal. Cocok untuk direbus, dibakar, tau campuran masakan. Rasa manis alami.",
-                category: "jagungfav"
-            },
-            {
-                id: 3,
-                name: "Jagung Putren",
-                price: 8000,
-                image: "img/JagungPutren.jfif",
-                description: "Jagung putren segar dan renyah. Ideal untuk tumisan, sup, atau capcay. Menambah tekstur dan gizi pada hidangan Anda.",
-                category: "jagung"
-            },
-            {
-                id: 4,
-                name: "Jagung Gigi Kuda",
-                price: 5500,
-                image: "img/JagungGigiKuda.jfif",
-                description: "Jagung gigi kuda kering. Pilihan yang baik untuk pembuatan tepung dan pakan ternak, jagung serbaguna, kualitas bagus.",
-                category: "jagung"
-            },
-            {
-                id: 5,
-                name: "Jagung Berondong",
-                price: 13000,
-                image: "img/JagungBerondong.jfif",
-                description: "Biji jagung khusus popcorn.Siap diolah menjadi camilan popcorn yang renyah di rumah.",
-                category: "jagung"
-            },
-            {
-                id: 6,
-                name: "Jagung Mutiara",
-                price: 10000,
-                image: "img/JagungMutiara.jfif",
-                description: "Jagung mutiara dengan warna dan tektur unik. Dapat digunakan untuk variasi olahan jagung Anda.",
-                category: "jagunfav"
-            },
-            {
-                id: 7,
-                name: "Jagung Pod",
-                price: 12000,
-                image: "img/JagungPod.jfif",
-                description: "Varietas jagung pod yang langka, setiap biji terbungkus kulit. Memberikan rasa berbeda.",
-                category: "jagung"
-            },
-            {
-                id: 8,
                 name: "Jagung Pipil",
-                price: 8000,
+                price: 6500,
                 image: "img/JagungPipil.jfif",
                 description: "Jagung pipil kering yang praktis. Cocok untuk berbagai masakan, bubur, atau pakan.",
                 category: "jagungfav"
@@ -1468,29 +1440,29 @@
 
         // Render products
         function renderProducts() {
-            productContainer.innerHTML = products.map(product => `
-                <div class="product-card bg-white rounded-2xl shadow-md overflow-hidden">
-                    <div class="relative">
-                        <img src="${product.image}" alt="${product.name}" class="w-full product-image object-cover" />
-                        ${product.category === 'jagungfav' ? `
-                        <div class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 md:px-3 md:py-1 rounded-full text-xs md:text-sm">
-                            Terlaris
-                        </div>
-                        ` : ''}
+        productContainer.innerHTML = products.map(product => `
+            <div class="product-card rounded-2xl shadow-md overflow-hidden">
+                <div class="relative">
+                    <img src="${product.image}" alt="${product.name}" class="w-full product-image object-cover" />
+                    ${product.category === 'jagungfav' ? `
+                    <div class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 md:px-3 md:py-1 rounded-full text-xs md:text-sm">
+                        Terlaris
                     </div>
-                    <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-2">${product.name}</h3>
-                        <p class="text-sm md:text-base text-gray-600 mb-4">${product.description}</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-lg md:text-2xl font-bold text-yellow-600">${formatCurrency(product.price)} / Kg </span>
-                            <button onclick="addToCart(${product.id})" class="btn-glass px-3 py-2 md:px-4 md:py-2 rounded-full text-yellow-600 hover:bg-yellow-400 hover:text-white transition duration-300">
-                                <i class="fas fa-cart-plus"></i>
-                            </button>
-                        </div>
+                    ` : ''}
+                </div>
+                <div class="p-4 md:p-6">
+                    <h3 class="text-lg product-title text-lg md:text-xl font-semibold mb-2">${product.name}</h3>
+                    <p class="text-sm product-desc text-sm md:text-base mb-4">${product.description}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg md:text-2xl font-bold text-amber-500 dark:text-amber-400">${formatCurrency(product.price)} / Kg </span>
+                        <button onclick="addToCart(${product.id})" class="btn-glass px-3 py-2 md:px-4 md:py-2 rounded-full text-yellow-600 dark:text-yellow-300 hover:bg-yellow-400 hover:text-white transition duration-300">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
                     </div>
                 </div>
-            `).join('');
-        }
+            </div>
+        `).join('');
+    }
 
         // Show notification
         function showNotification(message) {
@@ -1642,11 +1614,79 @@
                 mobileMenu.classList.remove('show');
             }
         });
+
+        //animasi
+            function animateSplitText() {
+            document.querySelectorAll('.split-text').forEach(paragraph => {
+                const text = paragraph.textContent.trim();
+                const words = text.split(/\s+/);
+                paragraph.innerHTML = '';
+                words.forEach((word, i) => {
+                    const span = document.createElement('span');
+                    span.textContent = word;
+                    span.style.opacity = 0;
+                    span.style.display = 'inline-block';
+                    span.style.transform = 'translateY(30px)';
+                    paragraph.appendChild(span);
+                    if (i < words.length - 1) paragraph.appendChild(document.createTextNode(' '));
+                });
+                gsap.to(paragraph.children, {
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.25,
+                    duration: 1.0,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: paragraph,
+                        start: "top 90%",
+                    }
+                });
+            });
+        }
+        // ...existing code...
+        document.addEventListener('DOMContentLoaded', function() {
+            // ...existing code...
+            animateSplitText();
+            // ...existing code...
+        });
+
+        // Tambahkan di bawah animateSplitText()
+        function animateBlurText() {
+            document.querySelectorAll('.blur-text-effect').forEach(paragraph => {
+                const text = paragraph.textContent.trim();
+                const words = text.split(/\s+/);
+                paragraph.innerHTML = '';
+                words.forEach((word, i) => {
+                    const span = document.createElement('span');
+                    span.textContent = word;
+                    paragraph.appendChild(span);
+                    if (i < words.length - 1) paragraph.appendChild(document.createTextNode(' '));
+                });
+                const spans = paragraph.querySelectorAll('span');
+                gsap.to(spans, {
+                    scrollTrigger: {
+                        trigger: paragraph,
+                        start: "top 90%",
+                        onEnter: () => {
+                            spans.forEach((span, idx) => {
+                                setTimeout(() => {
+                                    span.classList.add('active');
+                                }, idx * 120);
+                            });
+                        },
+                        onLeaveBack: () => {
+                            spans.forEach(span => span.classList.remove('active'));
+                        }
+                    }
+                });
+            });
+        }
+        // Panggil di DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // ...existing code...
+            animateBlurText();
+            // ...existing code...
+        });
     </script>
 </body>
-
 </html>
-
-
-
-

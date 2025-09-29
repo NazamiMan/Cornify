@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sejahtera Shop</title>
+    <title>JATRA - Jagung Sejahtera</title>
     
     <!-- External Dependencies -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -896,7 +896,7 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <div class="text-xl md:text-2xl font-bold text-primary">
-                        Sejahtera Shop
+                        JATRA 
                     </div>
                 </div>
                 
@@ -981,11 +981,11 @@
                     <h2 class="hero-title font-bold mb-10 md:mb-6 leading-tight">
                         <div class="scroll-float" data-scroll-animation="true">
                             Selamat datang di<br class="hidden md:block">
-                            <span class="md:hidden">Sejahtera Shop</span>
+                            <span class="md:hidden">Jagung Sejahtera</span>
                         </div>
                     </h2>
                     <p class="split-text hero-subtitle mb-10 md:mb-8 opacity-90">
-                        Dapatkan Jagung yang berkualitas tinggi langsung dari petani lokal dengan harga terbaik dan pengiriman cepat.
+                        Dapatkan Jagung berkualitas tinggi langsung dari petani lokal dengan harga terbaik, mudah dan praktis.
                     </p>
                     <div class="btn-group">
                         <button class="btn-primary glass-strong text-primary hover:scale-105 transition-all duration-300" onclick="location.href='#products'">
@@ -1016,6 +1016,9 @@
                         <a href="https://maps.app.goo.gl/tWL44AaoagVjT6j17?g_st=aw">
                             <img src="img/jagyng.jfif" alt="Beragam hasil pertanian segar seperti sayuran hijau, buah-buahan, dan rempah-rempah yang tersusun rapi di keranjang anyaman" class="rounded-2xl shadow-2xl w-full" />
                         </a>
+                        <div class="text-primary bg-amber-500 text-gray-300 px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold shadow-lg text-sm md:text-base">
+                            <i class="fas fa-location mr-2">  Klik lokasi pada gambar</i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1488,24 +1491,40 @@
         }
 
         // Checkout function
+        // Checkout function -> kirim ke WhatsApp
         function checkout() {
             if (cart.length === 0) {
                 showNotification('Keranjang belanja kosong!');
                 return;
             }
-            
+
+            // Nomor pedagang (gunakan format internasional, 08xxx => 628xxx)
+            let phone = "6285955448693"; 
+            let message = "Halo, saya ingin pesan:%0A";
+
+            cart.forEach(item => {
+                const product = products.find(p => p.id === item.productId);
+                message += `- ${product.name} x${item.quantity} (${formatCurrency(product.price * item.quantity)})%0A`;
+            });
+
             const total = cart.reduce((sum, item) => {
                 const product = products.find(p => p.id === item.productId);
                 return sum + (product.price * item.quantity);
             }, 0);
-            
-            showNotification(`Checkout berhasil! Total: ${formatCurrency(total)}`);
+
+            message += `%0ATotal: ${formatCurrency(total)}`;
+
+            let url = `https://wa.me/${phone}?text=${message}`;
+            window.open(url, "_blank"); // buka WhatsApp
+
+            // Kosongkan keranjang setelah checkout
             cart = [];
             updateCartCount();
             renderCartItems();
             updateCartTotal();
             cartModal.style.display = 'none';
         }
+
 
         // Mobile menu toggle
         function toggleMobileMenu() {
@@ -1690,4 +1709,3 @@
     </script>
 </body>
 </html>
-
